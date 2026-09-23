@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { SiteHeader } from "@/components/SiteHeader";
+import { AppShell } from "@/components/AppShell";
 import { JourneyProgress } from "@/components/JourneyProgress";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/db";
@@ -74,11 +74,10 @@ export default async function ExamsStepPage({
   const pending = student.claimedSkills.filter((c) => c.status === "pending").length;
 
   return (
-    <div className="min-h-screen">
-      <SiteHeader />
+    <AppShell active="/journey/exams">
       <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6">
         <JourneyProgress step={2} />
-        <h1 className="font-display text-3xl font-semibold">Skill exams</h1>
+        <h1 className="font-display text-3xl font-semibold">Exam dashboard</h1>
         <p className="mt-2 text-ink-muted">
           One exam per skill. Strict mode: no paste, stay on this tab, timer on. Pass to verify.
         </p>
@@ -170,8 +169,12 @@ export default async function ExamsStepPage({
           <Link href="/journey/skills" className="text-ink-muted underline">
             ← Edit skills
           </Link>
+          {" · "}
+          <Link href="/journey" className="text-ink-muted underline">
+            Student home
+          </Link>
         </p>
       </main>
-    </div>
+    </AppShell>
   );
 }

@@ -1,6 +1,16 @@
 # Deploy (for teammates)
 
-This repo root is the **Next.js Talent Proof** app that runs at `http://localhost:3000`.
+## One connected product (localhost:3000)
+
+| Role | Entry | What you get |
+|------|--------|----------------|
+| Student | `/journey` | Home + Skills + Exam dashboard + Projects + Certificate |
+| HR / Recruiter | `/recruiter` | Overview + Find talent + Candidate profile + Shortlists |
+
+All use the **same Prisma database**. HR only sees skills/projects students actually verified.
+
+Older Vite demos remain under `apps/` for reference but are **not** required for the main deploy.
+
 
 ## Local run (same as localhost:3000)
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { SiteHeader } from "@/components/SiteHeader";
+import { AppShell } from "@/components/AppShell";
 import { JourneyProgress } from "@/components/JourneyProgress";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/db";
@@ -91,8 +91,7 @@ export default async function CertificateStepPage() {
   const verifiedProjects = student.projects.filter((p) => p.status === "completed");
 
   return (
-    <div className="min-h-screen">
-      <SiteHeader />
+    <AppShell active="/journey/certificate">
       <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6">
         <JourneyProgress step={4} />
         <h1 className="font-display text-3xl font-semibold">Your certificate</h1>
@@ -152,8 +151,12 @@ export default async function CertificateStepPage() {
           <Link href="/journey/projects" className="underline">
             ← Back to projects
           </Link>
+          {" · "}
+          <Link href="/journey" className="underline">
+            Student home
+          </Link>
         </p>
       </main>
-    </div>
+    </AppShell>
   );
 }

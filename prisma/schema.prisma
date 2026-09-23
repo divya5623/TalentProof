@@ -92,12 +92,13 @@ model Certificate {
 }
 
 model RecruiterProfile {
-  id        String @id @default(cuid())
-  userId    String @unique
-  company   String
-  title     String @default("Recruiter")
-  verified  Boolean @default(true)
-  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id             String  @id @default(cuid())
+  userId         String  @unique
+  company        String
+  title          String  @default("Recruiter")
+  verified       Boolean @default(true)
+  shortlistsJson String  @default("[]")
+  user           User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Project {

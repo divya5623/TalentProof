@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { SiteHeader } from "@/components/SiteHeader";
+import { AppShell } from "@/components/AppShell";
 import { JourneyProgress } from "@/components/JourneyProgress";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/db";
@@ -103,8 +103,7 @@ export default async function ProjectsStepPage({
   const params = await searchParams;
 
   return (
-    <div className="min-h-screen">
-      <SiteHeader />
+    <AppShell active="/journey/projects">
       <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6">
         <JourneyProgress step={3} />
         <h1 className="font-display text-3xl font-semibold">Prove your projects</h1>
@@ -169,6 +168,6 @@ export default async function ProjectsStepPage({
           Certificate will only list skills & projects you verified.
         </p>
       </main>
-    </div>
+    </AppShell>
   );
 }

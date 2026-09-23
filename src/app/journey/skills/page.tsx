@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { SiteHeader } from "@/components/SiteHeader";
+import { AppShell } from "@/components/AppShell";
 import { JourneyProgress } from "@/components/JourneyProgress";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/db";
@@ -111,8 +111,7 @@ export default async function SkillsStepPage({
   );
 
   return (
-    <div className="min-h-screen">
-      <SiteHeader />
+    <AppShell active="/journey/skills">
       <main className="mx-auto max-w-2xl px-4 py-8 sm:px-6">
         <JourneyProgress step={1} />
         <h1 className="font-display text-3xl font-semibold">What skills do you want to prove?</h1>
@@ -194,6 +193,6 @@ export default async function SkillsStepPage({
           </button>
         </form>
       </main>
-    </div>
+    </AppShell>
   );
 }
