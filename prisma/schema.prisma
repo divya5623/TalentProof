@@ -1,0 +1,303 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  role         String // student | recruiter | reviewer | admin
+  createdAt    DateTime @default(now())
+
+  studentProfile   StudentProfile?
+  recruiterProfile RecruiterProfile?
+  notifications    Notification[]
+  consentRecords   ConsentRecord[]
+  auditLogs        AuditLog[]       @relation("ActorLogs")
+  contactRequestsSent     ContactRequest[] @relation("RecruiterRequests")
+  contactRequestsReceived ContactRequest[] @relation("StudentRequests")
+}
+
+model StudentProfile {
+  id              String  @id @default(cuid())
+  userId          String  @unique
+  headline        String  @default("")
+  bio             String  @default("")
+  visibility      String  @default("public") // public | limited | private
+  availability    String  @default("open")
+  location        String  @default("")
+  skillsJson      String  @default("[]")
+  // Journey wizard: 1 skills | 2 exams | 3 projects | 4 certificate
+  journeyStep     Int     @default(1)
+  resumeText      String  @default("")
+  resumeFileName  String  @default("")
+  githubUrl       String  @default("")
+  overallScore    Float   @default(0)
+  user            User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  projects        Project[]
+  badges          Badge[]
+  reports         VerificationReport[]
+  claimedSkills   ClaimedSkill[]
+  certificates    Certificate[]
+}
+
+model ClaimedSkill {
+  id          String   @id @default(cuid())
+  studentId   String
+  skillSlug   String
+  skillName   String
+  source      String   @default("manual") // resume | manual
+  status      String   @default("pending") // pending | verified | failed
+  score       Float?
+  examJson    String   @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  student     StudentProfile @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  sessions    SkillExamSession[]
+
+  @@unique([studentId, skillSlug])
+}
+
+model SkillExamSession {
+  id              String   @id @default(cuid())
+  claimedSkillId  String
+  startedAt       DateTime @default(now())
+  endsAt          DateTime
+  submittedAt     DateTime?
+  status          String   @default("active") // active | submitted | terminated
+  answersJson     String   @default("{}")
+  integrityJson   String   @default("[]")
+  score           Float?
+  passed          Boolean  @default(false)
+  aiRiskScore     Float    @default(0)
+  claimedSkill    ClaimedSkill @relation(fields: [claimedSkillId], references: [id], onDelete: Cascade)
+}
+
+model Certificate {
+  id            String   @id @default(cuid())
+  studentId     String
+  certUid       String   @unique
+  score         Float
+  skillsJson    String   @default("[]")
+  projectsJson  String   @default("[]")
+  summaryJson   String   @default("{}")
+  issuedAt      DateTime @default(now())
+  student       StudentProfile @relation(fields: [studentId], references: [id], onDelete: Cascade)
+}
+
+model RecruiterProfile {
+  id        String @id @default(cuid())
+  userId    String @unique
+  company   String
+  title     String @default("Recruiter")
+  verified  Boolean @default(true)
+  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Project {
+  id             String   @id @default(cuid())
+  studentId      String
+  title          String
+  description    String
+  sourceType     String // zip | github | url
+  githubUrl      String?
+  publicUrl      String?
+  contribution   String   @default("sole author")
+  teamMembers    String   @default("[]")
+  technologies   String   @default("[]")
+  setupNotes     String   @default("")
+  storagePath    String?
+  status         String   @default("draft") // draft | analyzing | ready | assessing | completed | manual_review
+  supportLevel   String   @default("unknown")
+  detectedStack  String   @default("[]")
+  analysisJson   String   @default("{}")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  student     StudentProfile @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  analysisJobs AnalysisJob[]
+  testRuns     TestRun[]
+  assessments  Assessment[]
+  reports      VerificationReport[]
+}
+
+model AnalysisJob {
+  id              String   @id @default(cuid())
+  projectId       String
+  status          String   @default("queued") // queued | running | completed | failed
+  supportDecision String   @default("partial")
+  summary         String   @default("")
+  evidenceJson    String   @default("{}")
+  startedAt       DateTime?
+  finishedAt      DateTime?
+  createdAt       DateTime @default(now())
+  project         Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model TestRun {
+  id         String   @id @default(cuid())
+  projectId  String
+  status     String // passed | failed | skipped | blocked
+  durationMs Int      @default(0)
+  resultsJson String  @default("[]")
+  stdout     String   @default("")
+  stderr     String   @default("")
+  mode       String   @default("trusted")
+  createdAt  DateTime @default(now())
+  project    Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model Assessment {
+  id           String   @id @default(cuid())
+  projectId    String
+  durationSec  Int      @default(900)
+  policyJson   String   @default("{}")
+  status       String   @default("ready") // ready | in_progress | submitted | evaluated
+  createdAt    DateTime @default(now())
+  project      Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  questions    Question[]
+  sessions     AssessmentSession[]
+}
+
+model Question {
+  id           String @id @default(cuid())
+  assessmentId String
+  category     String
+  qtype        String @default("written") // written | mcq | debug
+  prompt       String
+  evidenceRefs String @default("[]")
+  optionsJson  String @default("[]")
+  rubricJson   String @default("{}")
+  orderIndex   Int    @default(0)
+  assessment   Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  answers      Answer[]
+}
+
+model AssessmentSession {
+  id            String   @id @default(cuid())
+  assessmentId  String
+  startedAt     DateTime @default(now())
+  endsAt        DateTime
+  submittedAt   DateTime?
+  status        String   @default("active") // active | submitted | expired
+  consentCamera Boolean  @default(false)
+  assessment    Assessment @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  answers       Answer[]
+  integrityEvents IntegrityEvent[]
+  report        VerificationReport?
+}
+
+model Answer {
+  id         String   @id @default(cuid())
+  sessionId  String
+  questionId String
+  content    String   @default("")
+  score      Float?
+  feedback   String   @default("")
+  updatedAt  DateTime @updatedAt
+  session    AssessmentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([sessionId, questionId])
+}
+
+model IntegrityEvent {
+  id        String   @id @default(cuid())
+  sessionId String
+  type      String
+  severity  String   @default("info") // info | warning | review
+  metadata  String   @default("{}")
+  createdAt DateTime @default(now())
+  session   AssessmentSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model SkillDefinition {
+  id          String @id @default(cuid())
+  slug        String @unique
+  name        String
+  criteriaJson String @default("{}")
+  description String @default("")
+  badges      Badge[]
+}
+
+model Badge {
+  id              String   @id @default(cuid())
+  badgeUid        String   @unique
+  studentId       String
+  skillId         String
+  status          String   @default("issued") // issued | revoked | expired
+  evidenceSummary String   @default("")
+  limitations     String   @default("")
+  issuedAt        DateTime @default(now())
+  expiresAt       DateTime?
+  student         StudentProfile @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  skill           SkillDefinition @relation(fields: [skillId], references: [id])
+}
+
+model VerificationReport {
+  id             String   @id @default(cuid())
+  projectId      String
+  studentId      String
+  sessionId      String?  @unique
+  scoresJson     String   @default("{}")
+  confidence     Float    @default(0.5)
+  evidenceJson   String   @default("{}")
+  limitations    String   @default("")
+  reviewStatus   String   @default("auto") // auto | needs_review | reviewed
+  createdAt      DateTime @default(now())
+  project        Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  student        StudentProfile @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  session        AssessmentSession? @relation(fields: [sessionId], references: [id])
+}
+
+model ContactRequest {
+  id          String   @id @default(cuid())
+  recruiterId String
+  studentId   String
+  type        String   @default("contact") // contact | interview
+  message     String
+  status      String   @default("pending") // pending | accepted | rejected
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  recruiter   User     @relation("RecruiterRequests", fields: [recruiterId], references: [id], onDelete: Cascade)
+  student     User     @relation("StudentRequests", fields: [studentId], references: [id], onDelete: Cascade)
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  title     String
+  body      String
+  payload   String   @default("{}")
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ConsentRecord {
+  id        String   @id @default(cuid())
+  userId    String
+  purpose   String
+  version   String
+  granted   Boolean
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actorId   String?
+  action    String
+  entity    String
+  entityId  String?
+  meta      String   @default("{}")
+  createdAt DateTime @default(now())
+  actor     User?    @relation("ActorLogs", fields: [actorId], references: [id])
+}

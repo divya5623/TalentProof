@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sora: "Sora", system-ui, sans-serif;
+  --font-plex: "IBM Plex Sans", system-ui, sans-serif;
+  --font-plex-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --ink: #0a1628;
+  --paper: #f4f7fa;
+  --seal: #176b63;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(23, 107, 99, 0.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(10, 22, 40, 0.06), transparent 45%),
+    linear-gradient(180deg, #eef3f7 0%, var(--paper) 40%, #e8eef4 100%);
+  font-family: var(--font-plex);
+}
+
+::selection {
+  background: rgba(23, 107, 99, 0.2);
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-seal disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-seal text-white hover:bg-seal-deep;
+  }
+  .btn-secondary {
+    @apply btn border border-paper-line bg-white text-ink hover:border-seal/40;
+  }
+  .btn-ghost {
+    @apply btn text-ink-soft hover:bg-white/70;
+  }
+  .input {
+    @apply w-full rounded-lg border border-paper-line bg-white px-3 py-3 text-base text-ink placeholder:text-ink-muted focus:border-seal focus:outline-none focus:ring-2 focus:ring-seal/20;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-soft;
+  }
+  .panel {
+    @apply rounded-2xl border border-paper-line bg-paper-card shadow-panel;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
