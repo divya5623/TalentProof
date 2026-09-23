@@ -1,0 +1,24 @@
+# Talent Proof — Render Web Service
+# Connect https://github.com/divya5623/TalentProof → New Web Service → use this blueprint
+# Or: Dashboard → New → Web Service → this repo
+
+services:
+  - type: web
+    name: talent-proof
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npx prisma db push && npx tsx prisma/seed.ts && npm run start
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        value: file:./dev.db
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: EXECUTION_MODE
+        value: trusted
+      - key: NEXT_PUBLIC_APP_URL
+        sync: false
+        # After first deploy, set to https://YOUR-SERVICE.onrender.com

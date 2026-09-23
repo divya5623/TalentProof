@@ -1,57 +1,79 @@
-# Deploy (for teammates)
+# Deploy Talent Proof (live URL for judges)
 
-## One connected product (localhost:3000)
+The app at **repo root** is Next.js (`npm run dev` → localhost:3000).
 
-| Role | Entry | What you get |
-|------|--------|----------------|
-| Student | `/journey` | Home + Skills + Exam dashboard + Projects + Certificate |
-| HR / Recruiter | `/recruiter` | Overview + Find talent + Candidate profile + Shortlists |
+---
 
-All use the **same Prisma database**. HR only sees skills/projects students actually verified.
+## Option A — Render (fastest, keeps SQLite)
 
-Older Vite demos remain under `apps/` for reference but are **not** required for the main deploy.
+1. Open https://dashboard.render.com → **New** → **Blueprint**
+2. Connect GitHub repo: **`divya5623/TalentProof`**
+3. Apply `render.yaml` (already in the repo)
+4. After deploy, set env:
+   - `NEXT_PUBLIC_APP_URL` = `https://YOUR-SERVICE.onrender.com`
+5. Open the public URL
 
-
-## Local run (same as localhost:3000)
-
-```bash
-npm install
-cp .env.example .env
-npx prisma db push
-npx tsx prisma/seed.ts
-npm run dev
-```
-
-Open http://localhost:3000
-
-Demo logins (after seed):
+Demo logins (seed runs on start):
 - `student@talentproof.dev` / `password123`
 - `recruiter@talentproof.dev` / `password123`
 
-## Environment variables
+> Free tier sleeps after idle; first load may take ~30s.
 
-Copy from `.env.example`:
+---
 
-| Variable | Notes |
-|----------|--------|
-| `DATABASE_URL` | Local: `file:./dev.db`. Production: use Postgres URL if hosting without persistent disk |
-| `AUTH_SECRET` | Long random string |
-| `NEXT_PUBLIC_APP_URL` | Public site URL (e.g. `https://your-app.vercel.app`) |
+## Option B — Vercel (needs Postgres)
+
+SQLite does **not** persist on Vercel. Use free Neon/Supabase Postgres.
+
+1. Create DB: https://neon.tech → copy connection string  
+2. https://vercel.com/new → import **`divya5623/TalentProof`**
+3. **Root Directory:** `.` (repo root, not `apps/`)
+4. Framework: Next.js  
+5. Environment variables:
+
+| Name | Value |
+|------|--------|
+| `DATABASE_URL` | Neon Postgres URL |
+| `AUTH_SECRET` | long random string |
+| `NEXT_PUBLIC_APP_URL` | your `https://….vercel.app` URL |
 | `EXECUTION_MODE` | `trusted` |
-| `OPENAI_API_KEY` | Optional |
 
-## Suggested deploy (Vercel)
+6. Deploy → then run once (local or Vercel CLI):
 
-1. Import https://github.com/divya5623/TalentProof
-2. Root directory: **repo root** (not `apps/`)
-3. Framework: Next.js
-4. Build: `prisma generate && next build`
-5. Set env vars above
-6. For production DB, switch Prisma datasource to Postgres and set `DATABASE_URL`
+```bash
+DATABASE_URL="your-neon-url" npx prisma db push
+DATABASE_URL="your-neon-url" npx tsx prisma/seed.ts
+```
 
-Postinstall already runs `prisma generate`.
+Also change Prisma provider to `postgresql` in `prisma/schema.prisma` before Vercel build:
 
-## Important
+```prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
 
-- Ignore `apps/` for the main deploy — those are older Vite demos.
-- Do **not** commit `.env` or `prisma/dev.db`.
+---
+
+## Option C — CLI (this machine)
+
+```powershell
+npx vercel login
+npx vercel --prod
+```
+
+Requires Vercel account login in the browser.
+
+---
+
+## Connected product routes after deploy
+
+| Who | Path |
+|-----|------|
+| Student | `/journey` |
+| Exams | `/journey/exams` |
+| HR | `/recruiter` |
+| Find talent | `/recruiter/talent` |
+
+Ignore `apps/` for the main deploy (old Vite demos).
