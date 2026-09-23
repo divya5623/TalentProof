@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Radio, Award, RotateCcw } from 'lucide-react';
+import { Check, Radio, Award, RotateCcw } from 'lucide-react';
 import { useTalent } from '../../context/TalentContext';
 
 export const Header: React.FC = () => {
@@ -8,20 +8,17 @@ export const Header: React.FC = () => {
   return (
     <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-subtle">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand & System Tag */}
+        {/* Talent Proof Brand */}
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-trust-50 border border-trust-200 flex items-center justify-center text-trust-600 shadow-sm">
-            <ShieldCheck className="w-6 h-6 stroke-[2.2]" />
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white shadow-sm">
+            <Check className="w-6 h-6 stroke-[3]" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <span className="font-bold text-slate-900 text-lg tracking-tight">TrustHire AI</span>
-              <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-trust-50 text-trust-700 border border-trust-200">
-                ZERO-TRUST
-              </span>
+              <span className="font-bold text-slate-900 text-lg tracking-tight">Talent Proof</span>
             </div>
             <p className="text-xs text-slate-500 font-medium hidden sm:block">
-              Student Skill Verification & Proctored Examination Suite
+              Enterprise Skill Verification Protocol
             </p>
           </div>
         </div>
