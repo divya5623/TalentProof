@@ -106,9 +106,9 @@ export default function LandingPage() {
           </div>
           <div className="mt-6 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
             {[
-              ["Assessment", "/assessments/session"],
+              ["Student journey", "/journey"],
               ["Projects", "/projects"],
-              ["Certificates", "/certificate"],
+              ["Badges", "/badges"],
               ["Find talent", "/recruiter/candidates"],
             ].map(([label, href]) => (
               <Link key={href} href={href} className="rounded-xl border border-paper-line bg-white p-4 font-medium text-ink transition hover:border-seal hover:text-seal">
