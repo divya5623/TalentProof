@@ -1,464 +1,419 @@
 
-# 🚀 SkillBridge AI
+# 🔐 Verified
+### Don't Trust the Claim. Verify the Skill.
 
-### Prove Your Skills. Showcase Your Potential.
-
-> An agentic AI-powered platform that analyzes student projects, conducts adaptive technical assessments, and generates evidence-based skill reports for HR recruiters.
-
-[![Status](https://img.shields.io/badge/Status-In%20Development-orange)]()
-[![Theme](https://img.shields.io/badge/Theme-Agentic%20AI-blue)]()
-[![License](https://img.shields.io/badge/License-MIT-green)]()
+> An AI-powered skill verification and talent discovery platform that helps students demonstrate their genuine technical capabilities through coding assessments, GitHub project analysis, and adaptive technical interviews.
 
 ---
 
-## 📌 Overview
+## 🌟 Overview
 
-Many students build impressive projects but struggle to demonstrate their actual technical knowledge to recruiters.
+**Verified** is an AI-powered platform designed to bridge the gap between student resumes and demonstrable technical skills.
 
-Traditional resumes and certificates do not always reveal whether a student understands their implementation. Meanwhile, recruiters need efficient and structured ways to evaluate practical technical skills.
+Students can select a technical skill, complete a skill-specific assessment, submit their GitHub projects, and participate in AI-powered technical questioning.
 
-**SkillBridge AI** addresses this challenge by connecting student project analysis with adaptive AI-powered technical assessments.
+Companies can discover candidates based on demonstrated skills, assessment evidence, and project understanding.
 
-The platform analyzes a student's actual code, generates project-specific questions, evaluates responses, and creates a transparent skill evidence report for HR review.
+Our goal is to help organizations evaluate practical capabilities beyond traditional resumes and self-reported skills.
 
 ---
 
 ## 🎯 Problem Statement
 
-Students often face difficulties proving their practical coding skills beyond resumes and certificates.
+Students build projects, learn programming languages, and develop technical skills, but companies often face challenges in evaluating whether candidates genuinely understand the work they claim.
 
-Recruiters also spend significant time evaluating project contributions, coding knowledge, and technical understanding through manual assessments.
+Traditional resumes, certificates, and basic screening methods may not fully demonstrate:
 
-There is a need for a platform that can:
+- Practical programming ability.
+- Logical and algorithmic thinking.
+- Project implementation knowledge.
+- Debugging and problem-solving ability.
+- Understanding of AI-assisted code.
 
-- Analyze real student projects.
-- Generate relevant technical questions.
-- Evaluate project understanding.
-- Provide evidence-backed skill insights.
-- Support recruiters with structured candidate information.
+At the same time, companies spend significant time identifying suitable candidates for technical roles.
+
+**Verified aims to connect practical skill assessment with evidence-based talent discovery.**
 
 ---
 
 ## 💡 Our Solution
 
-SkillBridge AI provides an end-to-end student skill verification workflow:
+Verified provides two primary assessment pathways:
 
-```text
-Student Submits Project
-          ↓
-Source Code Analysis
-          ↓
-Feature & Skill Identification
-          ↓
-Project-Specific Question Generation
-          ↓
-Adaptive AI Technical Interview
-          ↓
-Answer Evaluation
-          ↓
-Evidence-Based Skill Report
-          ↓
-HR Recruiter Review
-```
+### 1️⃣ Programming Language Coding Assessment
 
-Our goal is not to replace human recruitment decisions. Instead, we provide structured evidence that helps recruiters review candidates more efficiently.
+Students select a programming language and difficulty level:
+
+- Basic
+- Intermediate
+- Advanced
+
+They then complete a coding assessment designed to evaluate programming ability, logical thinking, and problem-solving.
+
+### 2️⃣ GitHub Project-Based AI Interview
+
+Students submit a GitHub repository.
+
+AI analyzes the submitted project and generates questions based on the actual implementation.
+
+The AI interviewer asks technical questions, follow-ups, and project-specific challenges to evaluate the student's understanding.
 
 ---
 
-## ✨ Key Features
+## 🚀 Core Features
 
-### 👨‍🎓 Student Dashboard
+### 👨‍💻 Student Platform
 
-- Student authentication.
-- Project submission.
-- GitHub repository integration.
-- Project analysis status.
-- Assessment progress.
-- Skill evidence overview.
-- Learning roadmap.
-- Generated assessment reports.
+- Student registration and login.
+- Skill selection dashboard.
+- Programming language selection.
+- Other technical skill categories.
+- Basic, Intermediate, and Advanced assessments.
+- Coding examination workflow.
+- GitHub repository submission.
+- Project-specific AI interviews.
+- Skill verification and badges.
+- Role-based candidate visibility.
 
-### 🤖 Agentic AI Assessment
+### 🧠 Programming Language Assessment
 
-- Understands the submitted project's implementation.
-- Generates questions based on actual code evidence.
-- Asks adaptive follow-up questions.
-- Includes conceptual, debugging, and edge-case questions.
-- Uses structured evaluation rubrics.
-- Links assessment questions to project evidence.
+The coding assessment is designed to evaluate:
 
-### 🔍 Code Evidence Engine
+- Coding ability.
+- Logical thinking.
+- Algorithmic problem-solving.
+- Code correctness.
+- Assessment completion time.
+- Understanding of programming concepts.
 
-- Detects programming languages and frameworks.
-- Extracts functions, classes, APIs, and relevant concepts.
-- Identifies implementation patterns.
-- Links observations to source files and line references.
-- Separates detected evidence from unsupported assumptions.
+The platform is designed around a strict examination environment with assessment monitoring and integrity controls.
 
-### 🧪 Technical Assessment
+Potential monitoring features include:
 
-- Project-specific questions.
-- Conceptual understanding checks.
-- Debugging challenges.
-- Edge-case reasoning.
-- Answer evaluation.
-- Transparent assessment results.
+- Camera access.
+- Session timing.
+- Tab visibility monitoring.
+- Copy and paste activity detection.
+- Phone presence detection where technically feasible.
+- Assessment termination according to defined rules.
 
-### 🏢 HR Dashboard
+> **Important:** Browser-based monitoring cannot guarantee that all external devices, tabs, or AI tools are blocked. Monitoring must be implemented with appropriate security, privacy, and consent safeguards.
 
-- Candidate overview.
-- Project and technology information.
-- Skill evidence review.
-- Assessment summaries.
-- Recruiter notes.
-- Evidence-based candidate comparison support.
+### 🔍 GitHub Repository Analysis
 
-> SkillBridge AI is designed to support human decision-making, not automatically reject or select candidates.
+Students can submit a GitHub repository for project-based evaluation.
 
----
+The platform can analyze, where evidence is available:
 
-## 🧠 What Makes SkillBridge AI Different?
+- Programming languages.
+- Project structure.
+- Frameworks and dependencies.
+- Code organization.
+- Implementation patterns.
+- Error handling.
+- Documentation.
+- Testing.
+- Project architecture.
+- Potential security issues.
+- Project functionality where execution is supported.
 
-Most basic AI interview tools generate generic questions.
+The analysis is used to generate relevant technical questions.
 
-SkillBridge AI aims to connect:
+### 🤖 AI-Powered Technical Interview
 
-```text
-Actual Student Code
-       ↓
-Extracted Evidence
-       ↓
-Relevant Technical Question
-       ↓
-Student Answer
-       ↓
-Adaptive Follow-up
-       ↓
-Traceable Assessment Report
-```
+The AI agent generates questions based on the student's submitted project.
 
-This helps evaluate whether students can explain and reason about their own implementations.
+Example questions:
 
----
+- Why did you choose this technology?
+- Explain the function you implemented.
+- What happens if the database connection fails?
+- Why did you use this algorithm?
+- How would you improve this implementation?
+- Can you modify this function for a new requirement?
+- What are the limitations of your project?
 
-## 🏗️ System Architecture
+The interviewer can ask follow-up questions based on the student's responses.
 
-```text
-                    ┌──────────────────────┐
-                    │    Student Portal    │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │  Project Submission  │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │ Repository Validator │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │  Code Analysis Engine│
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │ Project Evidence Map │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │ Question Generation  │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │ Adaptive Assessment │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │ Evidence Report      │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │     HR Dashboard     │
-                    └──────────────────────┘
-```
+### 🏅 Skill Verification
 
----
+The platform supports skill-specific evaluation and evidence-based reports.
 
-## 🛠️ Technology Stack
+Potential skill categories include:
 
-### Frontend
+- Programming Languages.
+- Data Structures and Algorithms.
+- Backend Development.
+- Frontend Development.
+- Databases.
+- Cloud Computing.
+- AI / Machine Learning.
+- DevOps.
+- Other Technical Skills.
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- shadcn/ui
-- Lucide Icons
+Badges and reports should reflect the defined assessment criteria and available evidence.
 
-### Backend
+### 🏢 Recruiter Platform
 
-- FastAPI
-- Python
-- REST APIs
+Companies can:
 
-### Database & Authentication
-
-- PostgreSQL
-- Supabase
-- Supabase Authentication
-- Row Level Security
-
-### Code Analysis
-
-- Python AST
-- Tree-sitter
-- Static analysis tools
-- Test execution infrastructure
-
-### AI Layer
-
-- Evidence-grounded question generation
-- Adaptive question selection
-- Structured answer evaluation
-- Rubric-based assessment
-
-> The initial prototype will focus on Python projects. Support for additional languages can be added incrementally.
-
----
-
-## 🔐 Security and Privacy
-
-Source code and student information must be treated as sensitive user data.
-
-Security principles:
-
-- Authenticated access.
-- Role-based authorization.
-- Student-specific data isolation.
-- Secure repository handling.
-- Sandboxed code execution.
-- CPU, memory, and execution-time limits.
-- No unrestricted network access during code execution.
-- Secret and credential detection.
-- No frontend exposure of private API keys.
-- Human review for important recruitment decisions.
-
-AI-generated assessments should include evidence and limitations rather than unsupported claims.
-
----
-
-## 👥 User Roles
-
-### Student
-
-- Create an account.
-- Submit projects.
-- View code analysis.
-- Complete technical assessments.
-- Review skill evidence.
-- Access generated reports.
-
-### HR / Recruiter
-
-- Access authorized candidate information.
+- Register and log in.
+- Define technical role requirements.
+- Discover candidates based on relevant skills.
 - Review project evidence.
-- View assessment summaries.
-- Add recruiter notes.
-- Support structured candidate evaluation.
+- View assessment reports.
+- Shortlist candidates.
+- Send interview invitations.
+- Contact candidates through the platform.
+
+### 📊 Role-Based Candidate Dashboard
+
+The platform can display selected certified candidates for specific technical roles.
+
+The dashboard is intended to help companies identify candidates who satisfy the platform's defined assessment and verification requirements.
+
+Candidate visibility should be based on transparent criteria and should not imply guaranteed employment.
 
 ---
 
-## 📂 Planned Project Structure
+## 🔄 Complete User Workflow
 
 ```text
-skillbridge-ai/
-│
-├── app/
-│   ├── student/
-│   │   ├── dashboard/
-│   │   ├── projects/
-│   │   ├── assessment/
-│   │   └── reports/
-│   │
-│   └── hr/
-│       ├── dashboard/
-│       └── candidates/
-│
-├── components/
-│   ├── student/
-│   ├── hr/
-│   ├── shared/
-│   └── ui/
-│
-├── backend/
-│   ├── api/
-│   ├── services/
-│   ├── analysis_engine/
-│   └── tests/
-│
-├── docs/
-│   ├── PRD.md
-│   ├── ARCHITECTURE.md
-│   ├── SECURITY.md
-│   └── AI_EVALUATION.md
-│
-└── README.md
+                    ┌───────────────────────┐
+                    │    Login / Signup     │
+                    └───────────┬───────────┘
+                                │
+                ┌───────────────┴───────────────┐
+                │                               │
+        ┌───────▼────────┐             ┌────────▼────────┐
+        │    Student     │             │ Company / Recruiter │
+        └───────┬────────┘             └─────────────────┘
+                │
+        ┌───────▼────────────┐
+        │  Select Skill      │
+        └───────┬────────────┘
+                │
+       ┌────────┴─────────┐
+       │                  │
+┌──────▼─────────┐ ┌──────▼──────────────┐
+│ Programming    │ │ Other Technical    │
+│ Languages      │ │ Skills              │
+└──────┬─────────┘ └──────┬──────────────┘
+       │                  │
+┌──────▼─────────┐ ┌──────▼──────────────┐
+│ Select Language│ │ Select Skill        │
+└──────┬─────────┘ └──────┬──────────────┘
+       │                  │
+┌──────▼─────────┐ ┌──────▼──────────────┐
+│ Basic /        │ │ Skill-Specific      │
+│ Intermediate / │ │ Assessment          │
+│ Advanced       │ └─────────────────────┘
+└──────┬─────────┘
+       │
+┌──────▼─────────────────────────┐
+│ Coding Assessment              │
+│ Camera / Timing / Integrity    │
+│ Logical Thinking / Code Review │
+└──────┬─────────────────────────┘
+       │
+       └──────────────┐
+                      │
+              ┌───────▼──────────────┐
+              │ GitHub Project Path  │
+              │ Repository Upload    │
+              └───────┬──────────────┘
+                      │
+              ┌───────▼──────────────┐
+              │ AI Code Analysis     │
+              └───────┬──────────────┘
+                      │
+              ┌───────▼──────────────┐
+              │ Project-Based AI     │
+              │ Technical Interview  │
+              └───────┬──────────────┘
+                      │
+              ┌───────▼──────────────┐
+              │ Evidence & Skill     │
+              │ Verification         │
+              └───────┬──────────────┘
+                      │
+              ┌───────▼──────────────┐
+              │ Skill Badge / Report │
+              └───────┬──────────────┘
+                      │
+              ┌───────▼──────────────┐
+              │ Role-Based Dashboard │
+              └───────┬──────────────┘
+                      │
+              ┌───────▼──────────────┐
+              │ Recruiter Review &   │
+              │ Interview Invitation │
+              └──────────────────────┘
 ```
 
 ---
 
-## 🔄 Product Workflow
+## 🧩 AI Agent Architecture
 
-### Student Workflow
+| Agent | Responsibility |
+|---|---|
+| Repository Analysis Agent | Analyzes submitted GitHub projects |
+| Code Understanding Agent | Extracts implementation details and possible questions |
+| Question Generation Agent | Creates skill- and project-specific questions |
+| Interview Agent | Conducts interactive technical questioning |
+| Follow-Up Agent | Generates follow-up questions based on answers |
+| Evaluation Agent | Applies defined rubrics to assessment responses |
+| Evidence Report Agent | Produces evidence-based verification reports |
 
-1. Register or log in.
-2. Submit a project or connect a GitHub repository.
-3. Wait for code analysis.
-4. Review identified technologies and evidence.
-5. Complete the adaptive technical assessment.
-6. Review the generated skill evidence report.
-
-### HR Workflow
-
-1. Log in to the HR dashboard.
-2. Review authorized candidate profiles.
-3. Inspect projects and demonstrated technologies.
-4. Review assessment answers and supporting evidence.
-5. Add notes for further evaluation.
+Agents should operate with clear responsibilities, controlled inputs, and appropriate validation.
 
 ---
 
-## 🚧 Development Roadmap
+## 🛠️ Planned Technology Stack
 
-### Phase 1 — Foundation
+> The stack below is a proposed implementation direction and may change during development.
 
-- [ ] Project setup.
-- [ ] Authentication.
-- [ ] Role-based access.
-- [ ] Student dashboard.
-- [ ] HR dashboard layout.
-
-### Phase 2 — Project Management
-
-- [ ] Project submission.
-- [ ] GitHub repository integration.
-- [ ] File validation.
-- [ ] Project status tracking.
-
-### Phase 3 — Code Analysis
-
-- [ ] Python code parsing.
-- [ ] Function and class extraction.
-- [ ] Technology detection.
-- [ ] Evidence mapping.
-- [ ] Secure test execution.
-
-### Phase 4 — AI Assessment
-
-- [ ] Grounded question generation.
-- [ ] Question validation.
-- [ ] Adaptive follow-up questions.
-- [ ] Answer evaluation.
-- [ ] Debugging challenges.
-
-### Phase 5 — Reports and HR
-
-- [ ] Evidence report generation.
-- [ ] HR candidate review.
-- [ ] Recruiter notes.
-- [ ] Privacy and authorization review.
-
-### Phase 6 — Testing and Deployment
-
-- [ ] Unit testing.
-- [ ] Integration testing.
-- [ ] Security testing.
-- [ ] Performance testing.
-- [ ] Production deployment.
+| Layer | Planned Technology |
+|---|---|
+| Frontend | Next.js / React |
+| Styling | Tailwind CSS |
+| Backend | FastAPI or Node.js |
+| Database | PostgreSQL |
+| Authentication | Secure session-based authentication / OAuth |
+| GitHub Integration | GitHub API |
+| AI Integration | LLM-based analysis and interview services |
+| Code Execution | Isolated sandbox environment |
+| Deployment | Cloud hosting |
+| Monitoring | Application logs and audit trails |
 
 ---
 
-## 🧪 Example Assessment
+## 🔒 Security & Privacy
 
-### Submitted Project
+Security is a core requirement because the platform processes student code, assessment results, and potentially sensitive information.
 
-A Python FastAPI task-management API.
+Security considerations include:
 
-### Detected Evidence
+- Secure authentication.
+- Authorization and role-based access control.
+- GitHub OAuth token protection.
+- Secure repository access.
+- Secret detection.
+- Untrusted code sandboxing.
+- Resource and execution limits.
+- Network restrictions during code execution.
+- Prompt injection protection.
+- AI output validation.
+- Assessment data protection.
+- Privacy-conscious camera and monitoring controls.
+- Audit logging.
+- Secure handling of recruiter access.
 
-- FastAPI application.
-- POST endpoint.
-- GET endpoint.
-- In-memory list storage.
-- Task creation function.
+### Assessment Integrity
 
-### Generated Question
+The platform should use monitoring and examination controls to support assessment integrity.
 
-**Why did you use an in-memory list to store tasks, and what problems might occur when the application restarts?**
+However:
 
-### Follow-up Question
+- Camera presence does not prove identity or attention.
+- Copy/paste detection alone does not prove cheating.
+- Phone detection may be technically limited.
+- AI detection cannot reliably prove authorship.
+- Automated termination should include safeguards and clear rules.
 
-**How would you modify your implementation to support persistent storage using a database?**
-
-Questions should be generated only when the relevant implementation is supported by the project evidence.
-
----
-
-## 🌍 Expected Impact
-
-SkillBridge AI aims to:
-
-- Help students demonstrate practical technical skills.
-- Encourage deeper understanding of project implementations.
-- Provide recruiters with structured evidence.
-- Reduce repetitive assessment work.
-- Improve transparency in technical evaluation.
-- Support students in identifying learning gaps.
+Assessment results should be reviewed using multiple evidence sources.
 
 ---
 
-## 📊 Project Status
+## 📈 Future Vision
 
-🚧 **Currently in Development**
+Verified aims to develop a practical bridge between:
 
-The initial version is being developed as a prototype focused on student project analysis, adaptive technical assessments, and HR evidence review.
+```text
+Student Skills
+      ↓
+Practical Assessments
+      ↓
+Project Understanding
+      ↓
+Evidence-Based Reports
+      ↓
+Recruiter Discovery
+      ↓
+Technical Interview Opportunities
+```
+
+The platform can expand into:
+
+- University partnerships.
+- Skill-based talent discovery.
+- Industry-specific assessments.
+- Additional technical domains.
+- More advanced project evaluations.
+- Recruiter workflow integrations.
 
 ---
 
-## 🤝 Contribution
+## 🎯 Hackathon MVP
 
-Contributions and suggestions are welcome.
+The initial MVP will focus on demonstrating the core workflow:
 
-1. Fork the repository.
-2. Create a feature branch.
-3. Implement your changes.
-4. Test your changes.
-5. Open a pull request.
+1. Student login.
+2. Skill selection.
+3. Programming language selection.
+4. Difficulty selection.
+5. Coding assessment interface.
+6. GitHub repository submission.
+7. AI repository analysis.
+8. Project-specific technical questions.
+9. Evidence-based assessment report.
+10. Basic skill badge.
+11. Role-based candidate dashboard.
 
-Please avoid committing:
+The MVP should prioritize functional demonstrations over unsupported claims of complete automated verification.
 
-- API keys.
-- Passwords.
-- Access tokens.
-- Private student information.
-- Environment configuration secrets.
+---
+
+## ⚖️ Responsible Evaluation
+
+Verified is designed to support skill discovery, not replace human judgment.
+
+We aim to:
+
+- Evaluate practical skills fairly.
+- Avoid treating AI-generated code as automatic evidence of dishonesty.
+- Distinguish verified evidence from inferred skills.
+- Reduce bias in technical evaluation.
+- Protect student privacy.
+- Provide transparency around assessment results.
+- Support human review where appropriate.
+
+---
+
+## 🌍 Vision
+
+> **Make technical skills more demonstrable, assessments more evidence-based, and talent discovery more accessible.**
+
+Verified aims to help students showcase what they can actually understand and build, while helping companies explore candidates through relevant technical evidence.
+
+---
+
+## 📌 Project Status
+
+🚧 **Under Development**
+
+This project is being developed as an AI-powered skill verification and talent discovery platform.
+
+Features, technology choices, and evaluation methods may evolve throughout development.
+
+---
+
+## 👩‍💻 Contributors
+
+Built with ❤️ by the development team.
 
 ---
 
 ## 📄 License
 
-This project will be licensed under the MIT License when the license file is added.
-
----
-
-## 🚀 Vision
-
-**Move beyond resumes. Help students prove what they can actually build and explain.**
-
-SkillBridge AI connects student projects, adaptive technical assessments, and transparent evidence to support better skill discovery.
+License to be determined.
