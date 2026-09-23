@@ -417,3 +417,17 @@ Built with ❤️ by the development team.
 ## 📄 License
 
 License to be determined.
+
+---
+
+## Companion demos (hackathon)
+
+Additional clickable Vite apps under `apps/`:
+
+- `apps/talent-proof` — Talent Proof student/recruiter MVP
+- `apps/verified-candidate` — VERIFIED candidate verification journey
+- `apps/verified-hr-dashboard` — VERIFIED recruiter / HR dashboard
+
+```bash
+cd apps/verified-hr-dashboard && npm install && npm run dev
+```
